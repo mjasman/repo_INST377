@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="display funky camera" name="title">
+<title>FUNKY CAMERA</title>
+<style>
+
+    html,body {
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        background-color:#021C1E;
+    }
+
+    table{
+        padding:10px;
+        margin: auto;
+    }
+
+    
+    h1 {
+        font-family: sans-serif;
+        color:antiquewhite;
+    }
+
+    #container {
+        width: 1000px;
+        height: 500px;
+        border: 10px antiquewhite solid;
+        margin: auto;
+    }
+
+    #videoElement {
+        width: 1000px;
+        height: 500px;
+        background-color:#004445;
+        margin: auto;
+      
+    }
+    #logos {
+        margin:auto;
+        padding: 5px;
+        width: 200px;
+        height: auto;
+        background-color: #6FB98F;
+        color:#021C1E;
+        text-align: center;
+    }
+    button {
+        width: 250px;
+        height: 45px;
+        margin-top: 200px;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 5px;
+        background-color:#004445;
+        color:antiquewhite;
+        /*border: 5px solid black;*/
+        margin: auto;
+    }
+
+    button:hover {
+        background-color: rgb(49, 49, 1);
+        color: antiquewhite;
+    }
+
+    button:active {
+        background-color: rgb(73, 95, 29);
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>
+    <div id="logos">
+        FUNKY CAMERA
+    </div>
+    
+</h1>
+
+<div id="container">
+    <video id="videoElement" autoplay="true" >
+    </video>
+
+</div>
+
+<table>
+    <tr>
+        <td>
+            <button type="normal" onclick = "document.getElementById('videoElement').style.filter = 'none'">NORMAL
+            </button>
+        </td>
+        <td>
+            <button type="hue-rotate" onclick = "document.getElementById('videoElement').style.filter = 'hue-rotate(100deg)'">HUE-ROTATE
+            </button>
+        </td>
+        <td>
+            <button type="Invert" onclick = "document.getElementById('videoElement').style.filter = 'invert(100%)'">INVERT
+            </button>
+        </td>
+    </tr>
+</table>
+<script>
+
+    var video = document.querySelector("#videoElement");
+
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+    
+  </script>
+
+</body>
+</html>
